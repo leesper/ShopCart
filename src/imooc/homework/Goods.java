@@ -69,29 +69,15 @@ public class Goods {
 		if (getClass() != obj.getClass())
 			return false;
 		Goods other = (Goods) obj;
-		if (goodsDesp == null) {
-			if (other.goodsDesp != null)
-				return false;
-		} else if (!goodsDesp.equals(other.goodsDesp))
-			return false;
-		if (goodsId == null) {
-			if (other.goodsId != null)
-				return false;
-		} else if (!goodsId.equals(other.goodsId))
-			return false;
-		if (goodsName == null) {
-			if (other.goodsName != null)
-				return false;
-		} else if (!goodsName.equals(other.goodsName))
-			return false;
-		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
-			return false;
-		return true;
+		return goodsId.equals(other.goodsId) && 
+				goodsName.equals(other.goodsName) && 
+				goodsDesp.equals(other.goodsDesp) &&
+				Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
 	}
 
 	@Override
 	public String toString() {
-		return "Goods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", price=" + price + ", goodsDesp="
+		return "商品信息 [编号：" + goodsId + ", 名称：" + goodsName + ", 价格：" + price + ", 描述："
 				+ goodsDesp + "]";
 	}
 	
