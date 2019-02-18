@@ -26,5 +26,9 @@ public class GoodsInCart {
 		this.num = num;
 	}
 	
+	public String toString() {
+		return String.format("商品名称：%s，商品价格：%.1f，商品描述：%s，数量：%d", 
+				goods.getGoodsName(), goods.getPrice(), goods.getGoodsDesp(), num);
+	}
 	
 }

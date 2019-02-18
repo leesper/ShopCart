@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class TestDemo {
 	private static GoodsManage goodsManage = new GoodsManage();
+	private static ShoppingCart shoppingCart = new ShoppingCart();
+	private static Scanner s = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
-		mainMenu(s);
+		mainMenu();
 	}
 
-	public static void mainMenu(Scanner s) {
+	public static void mainMenu() {
 		while (true) {
 			System.out.println("********************");
 			System.out.println("** 主菜单 **");
@@ -22,9 +23,10 @@ public class TestDemo {
 			int mainCommand = s.nextInt();
 			switch (mainCommand) {
 			case 1:
-				manageMenu(s);
+				manageMenu();
 				break;
 			case 2:
+				shoppingCartMenu();
 				break;
 			case 0:
 				return;
@@ -35,7 +37,7 @@ public class TestDemo {
 		
 	}
 	
-	public static void manageMenu(Scanner s) {
+	public static void manageMenu() {
 		while (true) {
 			System.out.println("********************");
 			System.out.println("** 商品管理 **");
@@ -50,6 +52,7 @@ public class TestDemo {
 				goodsManage.importGoods();
 				break;
 			case 2:
+				System.out.println("显示所有商品信息");		
 				goodsManage.displayAllGoods();
 				break;
 			case 9:
@@ -60,7 +63,7 @@ public class TestDemo {
 		}
 	}
 	
-	public static void shoppingCartMenu(Scanner s) {
+	public static void shoppingCartMenu() {
 		while (true) {
 			System.out.println("********************");
 			System.out.println("** 购物车管理 **");
@@ -75,12 +78,20 @@ public class TestDemo {
 			int shoppingCartCommand = s.nextInt();
 			switch (shoppingCartCommand) {
 			case 1:
+				System.out.println("添加商品到购物车");
+				shoppingCart.addGoodsToCart(goodsManage);
 				break;
 			case 2:
+				System.out.println("修改购物车中的商品数量");
+				shoppingCart.updateNumInCart();
 				break;
 			case 3:
+				System.out.println("显示购物车中的所有商品信息");
+				shoppingCart.displayAllInCart();
 				break;
 			case 4:
+				System.out.println("结算：");
+				shoppingCart.settleAccounts();
 				break;
 			case 9:
 				return;
@@ -88,7 +99,6 @@ public class TestDemo {
 				System.out.println("请输入正确的数字");
 			}
 		}
-		
 		
 	}
 }
