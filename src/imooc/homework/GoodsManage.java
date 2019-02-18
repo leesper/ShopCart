@@ -29,6 +29,11 @@ public class GoodsManage {
 	}
 	
 	public void displayAllGoods() {
+		if (getGoodsSet().isEmpty()) {
+			System.out.println("还没有商品，记得导入商品信息呦！");
+			return;
+		}
+		
 		System.out.println("所有商品信息为：");
 		Iterator<Goods> it = goodsSet.iterator();
 		while (it.hasNext()) {

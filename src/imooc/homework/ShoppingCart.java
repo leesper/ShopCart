@@ -20,6 +20,11 @@ public class ShoppingCart {
 	}
 	
 	public void addGoodsToCart(GoodsManage gm) {
+		if (gm.getGoodsSet().isEmpty()) {
+			System.out.println("还没有商品，记得导入商品信息呦！");
+			return;
+		}
+		
 		@SuppressWarnings("resource")
 		Scanner s = new Scanner(System.in);
 		gm.displayAllGoods();
@@ -56,6 +61,11 @@ public class ShoppingCart {
 	}
 	
 	public void displayAllInCart() {
+		if (getShoppingCart().isEmpty()) {
+			System.out.println("购物车是空的呦，赶快装满吧～");
+			return;
+		}
+		
 		for (GoodsInCart goodsInCart : getShoppingCart().values()) {
 			System.out.println(goodsInCart);
 		}
@@ -68,5 +78,7 @@ public class ShoppingCart {
 		}
 		System.out.println("商品的总价为：" + total);
 		displayAllInCart();
+		// all goods in shopping cart settled
+		getShoppingCart().clear();
 	}
 }

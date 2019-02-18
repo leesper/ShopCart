@@ -1,5 +1,6 @@
 package imooc.homework;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TestDemo {
@@ -20,19 +21,26 @@ public class TestDemo {
 			System.out.println("0--退出");
 			System.out.println("********************");
 			System.out.println("请输入对应的数字进行操作：");
-			int mainCommand = s.nextInt();
-			switch (mainCommand) {
-			case 1:
-				manageMenu();
-				break;
-			case 2:
-				shoppingCartMenu();
-				break;
-			case 0:
-				return;
-			default:
-				System.out.println("请输入正确的数字");	
+			try {
+				int mainCommand = s.nextInt();
+				switch (mainCommand) {
+				case 1:
+					manageMenu();
+					break;
+				case 2:
+					shoppingCartMenu();
+					break;
+				case 0:
+					return;
+				default:
+					System.out.println("该数字没有对应的操作！");	
+				}
+			} catch (InputMismatchException ex) {
+				System.out.println("请不要输入非数字！");
+				// swallow the invalid input
+				s.next();
 			}
+			
 		}
 		
 	}
@@ -58,7 +66,7 @@ public class TestDemo {
 			case 9:
 				return;
 			default:
-				System.out.println("请输入正确的数字");
+				System.out.println("该数字没有对应的操作！");
 			}
 		}
 	}
@@ -96,7 +104,7 @@ public class TestDemo {
 			case 9:
 				return;
 			default:
-				System.out.println("请输入正确的数字");
+				System.out.println("该数字没有对应的操作！");
 			}
 		}
 		
